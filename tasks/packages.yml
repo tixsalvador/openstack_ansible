@@ -1,0 +1,6 @@
+--- # Installation of packages here 
+- name: Yum package install
+  yum: name={{ item }} state=present update_cache=yes
+  with_items:
+    - chrony
+    

@@ -6,3 +6,4 @@
   tasks:
     # Install pre-requisites
     - include: tasks/prerequisites.yml
+    - include: tasks/packages.yml
