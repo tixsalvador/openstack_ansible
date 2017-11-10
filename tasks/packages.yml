@@ -11,4 +11,4 @@
     state: present 
   when: ansible_hostname == "controller"
   notify:
-  - reload service
+  - reload chronyd

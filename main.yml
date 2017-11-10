@@ -9,5 +9,5 @@
     - include: tasks/packages.yml
 
   handlers:
-    - name: reload service
+    - name: reload chronyd
       service: name=chronyd state=restarted
