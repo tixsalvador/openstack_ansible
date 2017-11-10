@@ -7,3 +7,7 @@
     # Install pre-requisites
     - include: tasks/prerequisites.yml
     - include: tasks/packages.yml
+
+  handlers:
+    - name: reload service
+      service: name=chronyd state=restarted
