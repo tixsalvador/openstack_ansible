@@ -1,2 +1,0 @@
-- name: restart chronyd service
-  shell: systemctl restart chronyd 
