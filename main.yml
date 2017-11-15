@@ -5,9 +5,12 @@
   become_method: sudo
   tasks:
     # Install pre-requisites
+    - include: tasks/nodeconfig.yml
     - include: tasks/prerequisites.yml
-    - include: tasks/packages.yml
 
   handlers:
     - name: reload chronyd
       service: name=chronyd state=restarted
+
+    - name: yum upgrade
+      yum: name=* state=latest
