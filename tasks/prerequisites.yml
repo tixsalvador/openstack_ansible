@@ -6,6 +6,8 @@
   notify:
   - yum upgrade
 
+- meta: flush_handlers #run yum-upgrade before installing the packages below
+
 - name: Yum package install
   yum: name={{ item }} state=present update_cache=yes
   with_items:

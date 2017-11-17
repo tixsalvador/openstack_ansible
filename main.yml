@@ -7,6 +7,7 @@
     # Install pre-requisites
     - include: tasks/nodeconfig.yml
     - include: tasks/prerequisites.yml
+    - include: tasks/database.yml
 
   handlers:
     - name: reload chronyd

@@ -1,0 +1,29 @@
+--- # Database installation
+- name: Install database packages
+  yum: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - mariadb
+    - mariadb-server
+    - python2-PyMySQL
+  when: ansible_hostname == "controller"
+
+- name: Edit openstack.cnf file
+  blockinfile:
+    path: /etc/my.cnf.d/openstack.cnf
+    create: yes
+    content: |
+      [mysqld]
+      bind-address = 10.0.0.11
+      default-storage-engine = innodb
+      innodb_file_per_table = on
+      max_connections = 4096
+      collation-server = utf8_general_ci
+      character-set-server = utf8
+  when: ansible_hostname == "controller"
+
+- name: Starting and enabling mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+  when: ansible_hostname == "controller"
