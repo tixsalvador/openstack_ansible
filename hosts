@@ -7,3 +7,7 @@
 [select]
 10.0.0.11
 10.0.0.31
+
+[test]
+tixsalvador1.mylabserver.com
+tixsalvador2.mylabserver.com

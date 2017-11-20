@@ -21,7 +21,7 @@
     insertafter: '^#allow\s(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/\d{2})'
     line: 'allow 10.0.0.0/24'
     state: present 
-  when: ansible_hostname == "controller"
+  when: ansible_hostname == '{{controller_hostname}}'
   notify:
   - reload chronyd
 
@@ -30,7 +30,7 @@
     path: /etc/chrony.conf
     regexp: '^(.*?)server\s\d\.\w+\.\pool.*?\s\iburst.?$'
     replace: '\1'
-  when: ansible_hostname != "controller"
+  when: ansible_hostname != '{{controller_hostname}}'
 
 - name: configure chrony on other nodes add controller as ntp server and reload chrony
   lineinfile:
@@ -38,7 +38,7 @@
     insertafter: '^#\sPlease\sconsider.*$'
     line: 'server controller iburst'
     state: present
-  when: ansible_hostname != "controller"
+  when: ansible_hostname != '{{controller_hostname}}'
   notify:
   - reload chronyd
    
