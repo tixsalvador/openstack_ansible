@@ -4,7 +4,8 @@
   become: yes
   become_method: sudo
   vars:
-    controller_hostname: controller
+    controller_hostname: tixsalvador1
+    controller_ip: "{{ ansible_default_ipv4.address }}" 
   tasks:
     # Install pre-requisites
     - include: tasks/nodeconfig.yml
@@ -14,6 +15,9 @@
   handlers:
     - name: reload chronyd
       service: name=chronyd state=restarted
+   
+    - name: enable and restart firewalld
+      service: name=firewalld enabled=yes state=restarted
 
     - name: yum upgrade
       yum: name=* state=latest
