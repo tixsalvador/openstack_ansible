@@ -9,6 +9,7 @@
       10.0.0.51   object1
       10.0.0.52   object2
       10.0.0.61   controlmanager
+    marker: '#{mark} HOSTFILE'
 
 - name: Install centos firewalld
   yum:
