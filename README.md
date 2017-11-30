@@ -1,2 +1,1 @@
-Openstack configuring and installing on 5 nodes using ansible
-
+Openstack install on 5 nodes 
