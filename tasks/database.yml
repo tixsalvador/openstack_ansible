@@ -5,7 +5,6 @@
     - mariadb
     - mariadb-server
     - python2-PyMySQL
-  when: ansible_hostname ==  controller_hostname 
 
 - name: Edit openstack.cnf file
   blockinfile:
@@ -20,11 +19,9 @@
       collation-server = utf8_general_ci
       character-set-server = utf8
     marker: '#{mark} MYSQLD'
-  when: ansible_hostname ==  controller_hostname 
 
 - name: Starting and enabling mariadb
   service:
     name: mariadb
     state: started
     enabled: yes
-  when: ansible_hostname ==  controller_hostname 

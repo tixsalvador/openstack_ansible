@@ -3,6 +3,7 @@
   remote_user: user
   become: yes
   become_method: sudo
+  gather_facts: yes
   vars:
     controller_hostname: tixsalvador1
     controller_ip: "{{ ansible_default_ipv4.address }}" 
@@ -11,6 +12,9 @@
     - include: tasks/nodeconfig.yml
     - include: tasks/prerequisites.yml
     - include: tasks/database.yml
+      when: ansible_hostname == controller_hostname
+    - include: tasks/dbsecure.yml
+      when: ansible_hostname == controller_hostname and sql_root_pass is defined
 
   handlers:
     - name: reload chronyd

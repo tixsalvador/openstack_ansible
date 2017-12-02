@@ -11,6 +11,9 @@ localhost
 10.0.0.11
 10.0.0.31
 
-[test]
+[tixsalvador1]
 tixsalvador1.mylabserver.com
+
+[test]
 tixsalvador2.mylabserver.com
+tixsalvador1.mylabserver.com
