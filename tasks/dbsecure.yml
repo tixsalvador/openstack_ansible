@@ -2,12 +2,11 @@
 - name: Install sql dependencies
   yum: name=MySQL-python state=present
 
-- name: Set sql password
-  mysql_user: name=root host=localhost password={{ sql_root_pass }} state=present
-  #ignore_errors: True
-
 - name: Create root my.cnf file
   template: src=my.cnf.j2 dest=/root/.my.cnf owner=root mode=0600
+
+- name: Set sql password
+  mysql_user: name=root host=localhost password={{ sql_root_pass }} state=present
 
 - name: Mariadb flush privileges
   command: 'mysql -ne "FLUSH PRIVILEGES"'
