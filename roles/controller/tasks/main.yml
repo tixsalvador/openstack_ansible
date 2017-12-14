@@ -1,3 +1,8 @@
+- name: Add local IP address to /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: '{{ controller_ip }}  {{ controller_hostname }}'
+
 - name: Install rabbit-mq on controller
   yum: pkg=rabbitmq-server state=installed
   notify: Restart rabbitmq
