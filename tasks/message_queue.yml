@@ -1,0 +1,7 @@
+--- # Message Queue Installation
+
+- tasks:
+    - name: Installing and starting message queue
+      yum: name=rabbitmq-server state=present 
+    - service: name=rabbitmq-server state=started enabled=yes
+ 

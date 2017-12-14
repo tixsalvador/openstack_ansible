@@ -1,0 +1,7 @@
+- name: Add openstack user
+  command: 'rabbitmqctl add_user openstack {{ sql_root_pass }}'
+  changed_when: False
+
+- name: Give read/write access to openstack user
+  command: 'rabbitmqctl set_permissions openstack ".*" ".*" ".*"'
+  changed_when: False
